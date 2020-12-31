@@ -61,4 +61,4 @@ bot.on("message", async message => {
 
 });
 
-bot.login(token.token);
+bot.login(process.env.DJS_TOKEN);
