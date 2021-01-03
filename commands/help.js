@@ -9,7 +9,8 @@ module.exports.run =async (bot, message, args) => {
         .addField('**Minecraft**', 'Use this module to get some info about mc player and servers')
         .addField('**Misc**', 'Commands like serverinfo , userinfo')
         .addField('**Fun and Images**', 'This module is the MAIN module of the bot. It includes various fun commands')
-        .addField("To get further information", '***Use s!__module__***')
+        .addField('**GiveAway**', 'Feeling to give-away something Go ahead then')
+        .addField("To get further information", '***Use s!<category> eg `s!fun`***' )
 
         .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
         .setTimestamp()

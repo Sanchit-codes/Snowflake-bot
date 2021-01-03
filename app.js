@@ -22,7 +22,7 @@ fs.readdir("./commands/", (err, files) => {
   });
 
 });
-/*const { GiveawaysManager } = require('discord-giveaways');
+const { GiveawaysManager } = require('discord-giveaways');
 // Starts updating currents giveaways
 const manager = new GiveawaysManager(bot, {
     storage: './giveaways.json',
@@ -32,11 +32,11 @@ const manager = new GiveawaysManager(bot, {
         botsCanWin: false,
         exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
         embedColor: '#FF0000',
-        reaction: '🎉'
+        reaction: '<:Giveaway:795287777943486464>'
     }
 });
 // We now have a giveawaysManager property to access the manager everywhere!
-bot.giveawaysManager = manager;*/
+bot.giveawaysManager = manager;
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online on ${bot.guilds.size} servers!`);
@@ -61,4 +61,8 @@ bot.on("message", async message => {
 
 });
 
+<<<<<<< Updated upstream
 bot.login(process.env.DJS_TOKEN);
+=======
+bot.login(token.token);
+>>>>>>> Stashed changes
