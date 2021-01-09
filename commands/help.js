@@ -4,6 +4,7 @@ module.exports.run =async (bot, message, args) => {
 
     const embed = new MessageEmbed()
         .setTitle('Currently Available Categories')
+        .addField("Don't Have Nitro?", '**Good News! Now  the bot have `NQN` Features just like NQN you can use animated emotes. Make sure that bot have `Manage Webhooks` Perm**' )
         .setImage("https://cdn.discordapp.com/attachments/756712077736935577/792353584292298802/mathmodelssn.jpg")
         .addField('**Moderation**', 'Some moderation commands like `nick` , `addrole` etc')
         .addField('**Minecraft**', 'Use this module to get some info about mc player and servers')
