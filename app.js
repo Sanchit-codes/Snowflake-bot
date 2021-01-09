@@ -27,7 +27,7 @@ const { GiveawaysManager } = require('discord-giveaways');
 const manager = new GiveawaysManager(bot, {
     storage: './giveaways.json',
     updateCountdownEvery: 10000,
-    hasGuildMembersIntent: false,
+    hasGuildMembersIntent: true,
     default: {
         botsCanWin: false,
         exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
@@ -44,6 +44,74 @@ bot.on("ready", async () => {
   bot.user.setActivity("Prefix is s! use s!invite", {type: "PLAYING"});
 });
 
+bot.on("message", async (message) => {
+if(message.author.bot) return;
+let substringArray = get_substrings_between(message.content, ":", ":");
+let msg = message.content;
+if(!substringArray.length) return;
+
+substringArray.forEach(m => {
+    let emoji = bot.emojis.cache.find(x => x.name === m);
+    var replace = `:${m}:`;
+    var rexreplace = new RegExp(replace, 'g');
+
+    if(emoji && !msg.split(" ").find(x => x === emoji.toString()) && !msg.includes(`<a${replace}${emoji.id}>`)) msg = msg.replace(rexreplace, emoji.toString());
+})
+
+
+if(msg === message.content) return;
+
+let webhook = await message.channel.fetchWebhooks();
+webhook = webhook.find(x => x.name === "NQN2");
+
+if(!webhook) {
+    webhook = await message.channel.createWebhook(`NQN2`, {
+        avatar: bot.user.displayAvatarURL({dynamic: true})
+    });
+}
+
+await webhook.edit({
+    name: message.member.nickname ? message.member.nickname : message.author.username,
+    avatar: message.author.displayAvatarURL({dynamic: true})
+})
+
+message.delete().catch(m => {})
+
+webhook.send(msg).catch( m => {});
+
+await webhook.edit({
+    name: `NQN2`,
+    avatar: bot.user.displayAvatarURL({dynamic:true})
+})
+
+
+})
+//--------------------------------------------------- F U N C T I O N S --------------------------------------
+
+function get_substrings_between(str, startDelimiter, endDelimiter) {
+var contents = [];
+var startDelimiterLength = startDelimiter.length;
+var endDelimiterLength = endDelimiter.length;
+var startFrom = contentStart = contentEnd = 0;
+
+while (false !== (contentStart = strpos(str, startDelimiter, startFrom))) {
+  contentStart += startDelimiterLength;
+  contentEnd = strpos(str, endDelimiter, contentStart);
+  if (false === contentEnd) {
+    break;
+  }
+  contents.push(str.substr(contentStart, contentEnd - contentStart));
+  startFrom = contentEnd + endDelimiterLength;
+}
+
+return contents;
+}
+
+
+function strpos(haystack, needle, offset) {
+var i = (haystack + '').indexOf(needle, (offset || 0));
+return i === -1 ? false : i;
+}
 
 bot.on("message", async message => {
   if(message.author.bot) return;
@@ -61,8 +129,4 @@ bot.on("message", async message => {
 
 });
 
-<<<<<<< Updated upstream
-bot.login(process.env.DJS_TOKEN);
-=======
 bot.login(token.token);
->>>>>>> Stashed changes
