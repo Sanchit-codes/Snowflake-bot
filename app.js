@@ -114,6 +114,19 @@ return i === -1 ? false : i;
 }
 
 bot.on("message", async message => {
+
+  if(db.has(`afk-${message.author.id}+${message.guild.id}`)) {
+    const info = db.get(`afk-${message.author.id}+${message.guild.id}`)
+    await db.delete(`afk-${message.author.id}+${message.guild.id}`)
+    message.reply(`Your afk status have been removed Reason was (${info})`)
+  }
+  //checking for mentions
+  if(message.mentions.members.first()) {
+    if(db.has(`afk-${message.mentions.members.first().id}+${message.guild.id}`)) {
+        message.channel.send('`'+message.mentions.members.first().user.tag + "` is currently afk \n **REASON-> **" + db.get(`afk-${message.mentions.members.first().id}+${message.guild.id}`))
+    }else return;
+  }else;
+
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
