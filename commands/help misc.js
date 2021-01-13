@@ -11,6 +11,7 @@ module.exports.run =async (bot, message, args) => {
     .addField("5. Server-info", "Usage- `s!serverinfo`")
     .addField("6. User-info" ,"Usage- `s!userinfo <mention>` or `s!whois <mention>`" )
     .addField("7. Uptime", "Usage- `s!uptime`")
+    .addField("8. Away from keyboard", "Usage- `s!afk <reason>`")
     .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
     .setTimestamp()
     .setColor('#00FFFF');
