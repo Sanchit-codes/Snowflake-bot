@@ -10,6 +10,7 @@ module.exports.run =async (bot, message, args) => {
     .addField("4. Slowmode", "Usage- `s!sm <time>`")
     .addField("5. Clear Messages", "Usage- `s!clear <messages>`")
     .addField("6. Embed Builder","Usage- `s!embed <color> <message>`")
+    .addField("7. Spam","Usage- `s!spam <message>`")
     .setColor("#00FFFF")
     .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
         .setTimestamp();
