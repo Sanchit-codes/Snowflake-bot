@@ -22,7 +22,7 @@ New Pull Requests should be made upon the **testing** branch. If the code does n
 * [discord.js: "12.5.1"](https://www.npmjs.com/package/discord.js/v/12.5.1)
 * [ms: "2.1.3"](https://www.npmjs.com/package/ms/v/2.1.3)
 * [node-fetch: "2.6.1"](https://www.npmjs.com/package/node-fetch/v/2.6.1)
-* [fs: "0.0.1-security"](https://www.npmjs.com/package/fs/v/0.0.1)
+* [fs: "0.0.1-security"](https://www.npmjs.com/package/fs/v/0.0.1-security)
 * [discord.js-avatar: "1.0.0"](https://www.npmjs.com/package/discord.js-avatar/v/1.0.0)
 * [discord-image-generation: "1.4.5"](https://www.npmjs.com/package/discord-image-generation/v/1.4.5)
 * [got: "11.8.1"](https://www.npmjs.com/package/got/v/11.8.1)
