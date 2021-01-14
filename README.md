@@ -18,7 +18,7 @@ If you want help, don't worry, there are many ways to do it:
 
 New Pull Requests should be made upon the **testing** branch. If the code does not have any particular issues, then it will be merged into **master** branch.
 
-##Packages used
+## Packages used
 * [discord.js: "12.5.1"](https://www.npmjs.com/package/discord.js/v/12.5.1)
 * [ms: "2.1.3"](https://www.npmjs.com/package/ms/v/2.1.3)
 * [node-fetch: "2.6.1"](https://www.npmjs.com/package/node-fetch/v/2.6.1)
@@ -40,13 +40,13 @@ Some commands require an **Api Key** or a **Token** which can be find on these w
 * [Google Custom Search Api Key and CX](https://developers.google.com/custom-search/)
 * [Discord Developer to get the token for the bot](https://discordapp.com/developers/applications/)
 
-#Installation 
+# Installation 
 
 1. Before You Begin Make sure you have installed Node.js v10 or higher, Git and MongoDB.
 2. Clone this repository with git clone https://github.com/Androz2091/AtlantaBot.git.
 3. Run cd Snowflake-bot to move in the folder that Git has just created.
 
-#Install dependencies
+# Install dependencies
 
 1. Open an ADMIN command prompt, or PowerShell.
 2. Make sure that the folder is open in command prompt or powershell or terminal(Linux)
