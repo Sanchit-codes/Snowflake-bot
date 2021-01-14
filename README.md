@@ -6,7 +6,7 @@
 
 **Snowflake** is a multi function bot, you can use for moderation, giveaways,  basic needs and mainly its for fun and image generation. This Discord bot can be helpful for anyone who wants to learn how to make a discord.js bot, every command is in right place so it's more easy to read the entire project. I made this so new users can also look at the methods used for certain commands and get some ideas for their Discord bot.
 
-# Invite Me to your server
+Invite Link
 [Click Me To add to your server](https://cutt.ly/snowflake-bot)
 
 # Contributing
