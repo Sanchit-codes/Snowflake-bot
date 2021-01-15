@@ -46,7 +46,7 @@ Some commands require an **Api Key** or a **Token** which can be find on these w
 # Installation 
 
 1. Before You Begin Make sure you have installed Node.js v10 or higher, Git and MongoDB.
-2. Clone this repository with git clone https://github.com/Androz2091/AtlantaBot.git.
+2. Clone this repository with git clone https://github.com/PHANTOM-14/Snowflake-bot.git.
 3. Run cd Snowflake-bot to move in the folder that Git has just created.
 
 # Install dependencies
