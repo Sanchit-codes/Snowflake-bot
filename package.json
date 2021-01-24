@@ -20,5 +20,10 @@
     "googleapis": "^66.0.0",
     "moment-duration-format": "^2.3.2",
     "discord-giveaways": "^4.4.2"
+    "simple-youtube-api": "^5.2.1",
+    "ytdl-core": "^4.4.3",
+    "discord-player": "^3.2.1",
+    "@discordjs/opus": "^0.3.3",
+    "ffmpeg-static": "^4.2.7"
     }
   }
