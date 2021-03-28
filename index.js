@@ -53,10 +53,7 @@ client.on('message', async message => {
 	if (message.author.bot) return false;
 
 	if (message.content.includes("@here") || message.content.includes("@everyone")) return false;
-
-	if (message.content.toLowercase().includes(`Snowflake prefix`)) {
-		message.channel.send(`Hello there! I hope you are having a great day :D \n> The Default Prefix is **${prefix}** and **Snowflake** also try sn!commands and sn!help`);
-	}
+	
     const gprefix = db.get(`gprefix-${message.guild.id}`);
 	const prefixes = ['snowflake', 'sn!',gprefix];
 	const prefix = prefixes.find(p => message.content.startsWith(p));
