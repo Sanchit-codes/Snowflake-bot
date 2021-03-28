@@ -51,7 +51,8 @@ module.exports = {
                     '•`ping` - Ping pong ? \n' +
                     '•`stats` - Know about me how am made\n' +
                     '•`uptime` - I am online since\n' +
-                    '•`help` - Shows the command you are currently viewing\n'
+                    '•`help` - Shows the command you are currently viewing\n'+
+                    '•`setprefix` - Adds a new prefix within the guild on which bot acts on\n'
             },
             {
                 command: '**__User and search__**\n' +
