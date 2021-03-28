@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const db = require('quick.db')
-const { prefix, token } = require('./config.json');
+const { token } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -18,8 +18,8 @@ for (const folder of commandFolders) {
 
 const cooldowns = new Discord.Collection();
 
-client.once('ready', () => {
-	console.log('Ready! with all my modules');
+client.once('ready', () => {         
+	console.log(`------------------------------\n|\n| Ready! with all my modules |\n|\n------------------------------`);
 	client.user.setActivity(`${client.users.cache.size} Users | Snowflake prefix`, { type: "WATCHING" });
 });
 
@@ -50,14 +50,16 @@ client.on('message', async message => {
 			message.channel.send(message.mentions.members.first().user.tag + " is afk for " + db.get(`afk-${message.mentions.members.first().id}+${message.guild.id}`))
 		}
 	}
-
 	if (message.author.bot) return false;
 
 	if (message.content.includes("@here") || message.content.includes("@everyone")) return false;
 
-	if (message.content.includes(`Snowflake prefix`)) {
-		message.channel.send(`Hello there! I hope you are having a great day :D \n> The Prefix is **${prefix}** also try sn!commands and sn!help`);
+	if (message.content.toLowercase().includes(`Snowflake prefix`)) {
+		message.channel.send(`Hello there! I hope you are having a great day :D \n> The Default Prefix is **${prefix}** and **Snowflake** also try sn!commands and sn!help`);
 	}
+    const gprefix = db.get(`gprefix-${message.guild.id}`);
+	const prefixes = ['snowflake', 'sn!',gprefix];
+	const prefix = prefixes.find(p => message.content.startsWith(p));
 	if (!message.content.toLowerCase().startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
