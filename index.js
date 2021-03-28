@@ -56,7 +56,7 @@ client.on('message', async message => {
 	
     const gprefix = db.get(`gprefix-${message.guild.id}`);
 	const prefixes = ['snowflake', 'sn!',gprefix];
-	const prefix = prefixes.find(p => message.content.startsWith(p));
+	const prefix = prefixes.find(p => message.content.toLowerCase().startsWith(p));
 	if (!message.content.toLowerCase().startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
