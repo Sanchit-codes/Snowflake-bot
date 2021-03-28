@@ -17,7 +17,7 @@ module.exports = {
             .setArray([{
                 command: `All Categories are as follows you can do sn!commands to get them in your dm\n`+
                 `1. **Server Administration** - `+ 'Contains all commands necessary for server administration' + '\n2. **Animals** - Contains many commands which generate images of animals.' + 
-                `3. **About Bot** - `+ 'Contains all bot related commands like help stats etc' + '\n4. **User related and Search** - Contains user commands like userinfo and search commands like yt' +
+                `\n3. **About Bot** - `+ 'Contains all bot related commands like help stats etc' + '\n4. **User related and Search** - Contains user commands like userinfo and search commands like yt' +
                     '\n5. **GiveAway** - Contains commands for giveaway module like gstart and gdrop' + '\n6. **Fun and Images** - Contains Various commands that will try to bring a smile on your face' +
                     '\n7. **Weeb** - A module specially made for animelovers example wkiss and stuff'
             },
