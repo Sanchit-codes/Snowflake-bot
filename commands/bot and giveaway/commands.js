@@ -1,5 +1,5 @@
 const { prefix } = require('../../config.json');
-const {MessageEmbed} = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'commands',
@@ -13,11 +13,11 @@ module.exports = {
 
 		if (!args.length) {
 			const embed = new MessageEmbed()
-			embed 
-			.setTitle('Here\'s a list of all my commands')
-			.setDescription("`"+commands.map(command => command.name).join(', ')+"`")
-			.setFooter(`\nYou can send ${prefix}command [command name]\ to get info on a specific command!`)
-			.setColor('#00FF00');
+			embed
+				.setTitle('Here\'s a list of all my commands')
+				.setDescription("`" + commands.map(command => command.name).join(', ') + "`")
+				.setFooter(`\nYou can send ${prefix}command [command name]\ to get info on a specific command!`)
+				.setColor('#00FF00');
 
 
 			return message.author.send(embed)
@@ -37,15 +37,12 @@ module.exports = {
 		if (!command) {
 			return message.reply('that\'s not a valid command!');
 		}
-
-		data.push(`**Name:** ${command.name}`);
-
-		if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-		if (command.description) data.push(`**Description:** ${command.description}`);
-		if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
-
-		data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
-
-		message.channel.send(data, { split: true });
+		const cemd = new MessageEmbed();
+		cemd
+			.setTitle(`Informatiom about ${command.name}`)
+			.setDescription(`**Aliases:** ${command.aliases.join(', ')}\n**Description:** ${command.description}\n**Usage:** ${prefix}${command.name} ${command.usage}\n**Cooldown:** ${command.cooldown || 3} second(s)`)
+			.setFooter(`Used by - ` + message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+			.setColor(`#2ffff9`)
+		message.channel.send(cemd);
 	},
 };
