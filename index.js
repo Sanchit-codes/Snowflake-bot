@@ -6,6 +6,7 @@ const { token } = require('./config.json');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
+//command emitter
 const commandFolders = fs.readdirSync('./commands');
 
 for (const folder of commandFolders) {
@@ -15,13 +16,21 @@ for (const folder of commandFolders) {
 		client.commands.set(command.name, command);
 	}
 }
+//event emitter
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args, client));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args, client));
+	}
+}
 
 const cooldowns = new Discord.Collection();
 
-client.once('ready', () => {         
-	console.log(`------------------------------\n|\n| Ready! with all my modules |\n|\n------------------------------`);
-	client.user.setActivity(`${client.users.cache.size} Users | Snowflake prefix`, { type: "WATCHING" });
-});
+
 
 const { GiveawaysManager } = require('discord-giveaways');
 
@@ -53,9 +62,9 @@ client.on('message', async message => {
 	if (message.author.bot) return false;
 
 	if (message.content.includes("@here") || message.content.includes("@everyone")) return false;
-	
-    const gprefix = db.get(`gprefix-${message.guild.id}`);
-	const prefixes = ['snowflake', 'sn!',gprefix];
+
+	const gprefix = db.get(`gprefix-${message.guild.id}`);
+	const prefixes = ['snowflake', 'sn!', gprefix];
 	const prefix = prefixes.find(p => message.content.toLowerCase().startsWith(p));
 	if (!message.content.toLowerCase().startsWith(prefix) || message.author.bot) return;
 
