@@ -1,4 +1,5 @@
 {
 	"prefix": "sn!",
-	"token": "Token"
+	"token": "Token",
+        "ytapi": "API Key"
 }
