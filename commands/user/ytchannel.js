@@ -1,7 +1,8 @@
 const { MessageEmbed } = require('discord.js');
 const Discord = require('discord.js');
 const { YTSearcher } = require('ytsearcher');
-const api = 'AIzaSyDurAXSQnhtfO_IUxwov_jMEmG26ht8_2E';
+const { ytapi } = require('../../config.json');
+const api = ytapi;
 const searcher = new YTSearcher(api);
 module.exports = {
     name: 'ytchannel',
