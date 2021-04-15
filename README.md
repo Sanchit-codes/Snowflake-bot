@@ -40,8 +40,10 @@ New Pull Requests should be made upon the **testing** branch. If the code does n
 
 Some commands require an **Api Key** or a **Token** which can be find on these websites: 
 
-* [Google Custom Search Api Key and CX](https://developers.google.com/custom-search/)
+* [Google Custom Search Api Key and YT v3](https://developers.google.com/custom-search/)
 * [Discord Developer to get the token for the bot](https://discordapp.com/developers/applications/)
+* [GiphyApi Key](https://developers.giphy.com/docs/api)
+* [CatApi Key](https://thecatapi.com/)
 
 # Installation 
 
@@ -59,7 +61,7 @@ Some commands require an **Api Key** or a **Token** which can be find on these w
 # What do I need to make the bot work ?
 
 Make sure that you've putted everything in [config.json](https://github.com/PHANTOM-14/Snowflake-bot/blob/master/config.json) and [token.json](https://github.com/PHANTOM-14/Snowflake-bot/blob/master/token.json).
-After that go to command prompt and run the command `node app.js`(Open the folder in prompt before using this)
+After that go to command prompt and run the command `node index.js`(Open the folder in prompt before using this)
 
 # Commands
 
