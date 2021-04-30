@@ -10,7 +10,7 @@ module.exports = {
     usage: ['newprefix'],
 
     async execute(message, args, client) {
-        if (!message.member.hasPermission('MANAGE_SERVER') && !message.member.roles.cache.some((r) => r.name === "Giveaways")) {
+        if (!message.member.hasPermission('MANAGE_SERVER') && !message.member.roles.cache.some((r) => r.name === "Administration")) {
             return message.channel.send('Sorry! You need to have the `manage_server` permissions to start change bot prefix.');
         }
         let userinfoget =
