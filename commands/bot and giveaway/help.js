@@ -1,9 +1,12 @@
 const Discord = require('discord.js');
+const { prefix } = require('../../config.json');
+const { MessageEmbed } = require('discord.js');
 const Pagination = require('discord-paginationembed');
 module.exports = {
     name: 'help',
     description: 'Get the all available commands of bot.',
     async execute(message, args) {
+        const { commands } = message.client;
 
 
         let userinfoget =
@@ -132,27 +135,41 @@ module.exports = {
             })
 
             .setEmojisFunctionAfterNavigation(false);
+        if (!args[0]) {
+            FieldsEmbed.embed
+                .setColor(userinfoget.displayHexColor)
+                .setTitle('Snowflake bot')
+                .setDescription('`Use emojis below to navigate between pages.`')
 
-        FieldsEmbed.embed
-            .setColor(userinfoget.displayHexColor)
-            .setTitle('Snowflake bot')
-            .setDescription('`Use emojis below to navigate between pages.`')
+            await FieldsEmbed.build();
+        } else {
 
-        await FieldsEmbed.build();
-        const name = args[0].toLowerCase();
-        const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
-        //More info
+            const name = args[0].toLowerCase();
+            const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
-        if (!command) {
-            return message.reply('that\'s not a valid command!');
+            if (!command) {
+                return message.reply('that\'s not a valid command!');
+            }
+            let aliases = command.aliases;
+            if (!aliases) {
+                output = `None`
+            } else {
+                output = command.aliases.join(', ');
+            }
+            let usage = command.usage;
+            if (!usage) {
+                output1 = ` `
+            } else {
+                output1 = command.usage;
+            }
+            const cemd = new MessageEmbed();
+            cemd
+                .setTitle(`Informatiom about ${command.name}`)
+                .setDescription(`**Aliases:** ${output}\n**Description:** ${command.description}\n**Usage:** ${prefix}${command.name} ${output1}\n**Cooldown:** ${command.cooldown || 3} second(s)`)
+                .setFooter(`Used by - ` + message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+                .setColor(`#2ffff9`)
+            message.channel.send(cemd);
         }
-        const cemd = new MessageEmbed();
-        cemd
-            .setTitle(`Informatiom about ${command.name}`)
-            .setDescription(`**Aliases:** ${command.aliases.join(', ')}\n**Description:** ${command.description}\n**Usage:** ${prefix}${command.name} ${command.usage}\n**Cooldown:** ${command.cooldown || 3} second(s)`)
-            .setFooter(`Used by - ` + message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
-            .setColor(`#2ffff9`)
-        message.channel.send(cemd);
 
     }
 }
