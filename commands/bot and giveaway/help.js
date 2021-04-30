@@ -15,10 +15,10 @@ module.exports = {
         //'•`` - \n'+
         const FieldsEmbed = new Pagination.FieldsEmbed()
             .setArray([{
-                command: `All Categories are as follows you can do sn!commands to get them in your dm\n`+
-                `1. **Server Administration** - `+ 'Contains all commands necessary for server administration' + '\n2. **Animals** - Contains many commands which generate images of animals.' + 
-                `\n3. **About Bot** - `+ 'Contains all bot related commands like help stats etc' + '\n4. **User related and Search** - Contains user commands like userinfo and search commands like yt' +
-                    '\n5. **GiveAway** - Contains commands for giveaway module like gstart and gdrop' + '\n6. **Fun and Images** - Contains Various commands that will try to bring a smile on your face' +
+                command: `All Categories are as follows you can do sn!commands to get them in your dm also do sn!help [command] to get more info about specific command\n` +
+                    `1. **Server Administration** - ` + 'Contains all commands necessary for server administration' + '\n2. **Animals** - Contains many commands which generate images of animals.' +
+                    `\n3. **About Bot** - ` + 'Contains all bot related commands like help stats etc' + '\n4. **User related and Search** - Contains user commands like userinfo and search commands like yt' +
+                    '\n5. **GiveAway and Welcome** - Contains commands for giveaway module like gstart and gdrop and welcome' + '\n6. **Fun and Images** - Contains Various commands that will try to bring a smile on your face' +
                     '\n7. **Weeb** - A module specially made for animelovers example wkiss and stuff'
             },
             {
@@ -32,6 +32,7 @@ module.exports = {
                     '•`purge` - deletes messages from 1-99 in current channel\n' +
                     '•`slowmode` - adds slowmode in the channel\n' +
                     '•`say` - say a message through bot (Do not break any T.O.S using this)\n' +
+                    '•`roleinfo` - Gives the information about the given role\n' +
                     '•`embed` - say a embed message through bot with color of your choice\n'
             },
             {
@@ -51,7 +52,7 @@ module.exports = {
                     '•`ping` - Ping pong ? \n' +
                     '•`stats` - Know about me how am made\n' +
                     '•`uptime` - I am online since\n' +
-                    '•`help` - Shows the command you are currently viewing\n'+
+                    '•`help` - Shows the command you are currently viewing\n' +
                     '•`setprefix` - Adds a new prefix within the guild on which bot acts on\n'
             },
             {
@@ -68,11 +69,13 @@ module.exports = {
                     '•`mcuser` - Gets the profile of the MineCraft Player\n'
             },
             {
-                command: '**__GiveAway__**\n' +
+                command: '**__GiveAway and Welcome__**\n' +
                     '•`giveawaystart` - Starts the GiveAway in the Given channel\n' +
                     '•`giveawayend` - Ends the currently running giveaway by message id\n' +
                     '•`giveawayreroll` - Randomize the winner of the giveaway\n' +
-                    '•`giveawaydrop` - First to react the message wins\n'
+                    '•`giveawaydrop` - First to react the message wins\n' +
+                    '•`welcomechannel` - Sets the Channel in which Welcome Message will appear\n' +
+                    '•`welcomemsg` - Sets the message which will appear when user joins the Guild\n'
             },
             {
                 command: '**__Fun and Images__**\nNote:- all commands require args\n' +
@@ -120,7 +123,7 @@ module.exports = {
             // Similar to setFunctionEmojis() but this one takes only one emoji
             .addFunctionEmoji('⏩', (_, instance) => {
                 const field = instance.embed.fields[0];
-                FieldsEmbed.setPage(2)
+                FieldsEmbed.setPage(8)
 
             })
             .addFunctionEmoji('⏹', (_, instance) => {
@@ -136,6 +139,20 @@ module.exports = {
             .setDescription('`Use emojis below to navigate between pages.`')
 
         await FieldsEmbed.build();
+        const name = args[0].toLowerCase();
+        const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+        //More info
+
+        if (!command) {
+            return message.reply('that\'s not a valid command!');
+        }
+        const cemd = new MessageEmbed();
+        cemd
+            .setTitle(`Informatiom about ${command.name}`)
+            .setDescription(`**Aliases:** ${command.aliases.join(', ')}\n**Description:** ${command.description}\n**Usage:** ${prefix}${command.name} ${command.usage}\n**Cooldown:** ${command.cooldown || 3} second(s)`)
+            .setFooter(`Used by - ` + message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
+            .setColor(`#2ffff9`)
+        message.channel.send(cemd);
 
     }
 }
