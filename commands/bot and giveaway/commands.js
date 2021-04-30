@@ -37,10 +37,22 @@ module.exports = {
 		if (!command) {
 			return message.reply('that\'s not a valid command!');
 		}
+		let aliases = command.aliases;
+		if (!aliases) {
+			output = `None`
+		} else {
+			output = command.aliases.join(', ');
+		}
+		let usage = command.usage;
+		if (!usage) {
+			output1 = ` `
+		} else {
+			output1 = command.usage;
+		}
 		const cemd = new MessageEmbed();
 		cemd
 			.setTitle(`Informatiom about ${command.name}`)
-			.setDescription(`**Aliases:** ${command.aliases.join(', ')}\n**Description:** ${command.description}\n**Usage:** ${prefix}${command.name} ${command.usage}\n**Cooldown:** ${command.cooldown || 3} second(s)`)
+			.setDescription(`**Aliases:** ${output}\n**Description:** ${command.description}\n**Usage:** ${prefix}${command.name} ${output1}\n**Cooldown:** ${command.cooldown || 3} second(s)`)
 			.setFooter(`Used by - ` + message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
 			.setColor(`#2ffff9`)
 		message.channel.send(cemd);
