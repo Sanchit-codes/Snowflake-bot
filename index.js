@@ -1,9 +1,12 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const db = require('quick.db')
+
 const { token } = require('./config.json');
 
 const client = new Discord.Client();
+const logs = require('discord-logs');
+logs(client);
 client.commands = new Discord.Collection();
 
 //command emitter
@@ -40,8 +43,7 @@ const manager = new GiveawaysManager(client, {
 	hasGuildMembersIntent: false,
 	default: {
 		botsCanWin: false,
-		exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
-		embedColor: '#FF0000',
+		embedColor: '#00FFFF',
 		reaction: '<:Giveaway:795287777943486464>'
 	}
 });
@@ -125,5 +127,6 @@ client.on('message', async message => {
 	}
 
 });
+
 
 client.login(token);
