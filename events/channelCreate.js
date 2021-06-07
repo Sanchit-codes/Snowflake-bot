@@ -11,7 +11,8 @@ module.exports = {
         .setAuthor(guild.name, guild.iconURL({dynamic: true}))
             .setDescription(`A new updates in the channels have been noticed.\n**Channel Created <#${channel.id}> with channel Id ${channel.id}.**`)
             .setColor(guild.me.roles.highest.hexColor)
-            .setTimestamp()
+            .setTimestamp();
+            if(!logch) return;
         guild.channels.cache.get(logch).send(emd);
     }
 

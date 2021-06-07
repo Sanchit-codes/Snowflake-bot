@@ -15,7 +15,8 @@ module.exports = {
             .addField(`Role Info`, `Position: ${role.position} Color: ${role.hexColor} Mentionable: ${role.mentionable ? 'Yes' : 'No'}`)
             .setColor(`00FF00`)
             .setFooter(`UserID - ${user.id}`)
-            .setTimestamp()
+            .setTimestamp();
+            if(!logch) return;
         guild.channels.cache.get(logch).send(emd);
     }
 

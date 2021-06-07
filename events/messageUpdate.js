@@ -14,7 +14,8 @@ module.exports = {
             .addField(`Updated`, newContent)
             .setColor(guild.me.roles.highest.hexColor)
             .setFooter(`UserID - ${message.author.id}`)
-            .setTimestamp()
+            .setTimestamp();
+        if (!logch) return;
         guild.channels.cache.get(logch).send(emd);
     }
 

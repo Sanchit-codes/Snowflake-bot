@@ -13,7 +13,8 @@ module.exports = {
             .setDescription(`${user.username} left voice channel <#${channel.id}>`)
             .setColor(`FF0000`)
             .setFooter(`UserID - ${user.id}`)
-            .setTimestamp()
+            .setTimestamp();
+            if(!logch) return;
         guild.channels.cache.get(logch).send(emd);
     }
 

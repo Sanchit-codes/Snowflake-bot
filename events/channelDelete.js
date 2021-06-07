@@ -8,10 +8,11 @@ module.exports = {
         const logch = db.get(`logch-${guild.id}`);
         const emd = new MessageEmbed();
         emd
-        .setAuthor(guild.name, guild.iconURL({dynamic: true}))
+            .setAuthor(guild.name, guild.iconURL({ dynamic: true }))
             .setDescription(`A new updates in the channels have been noticed.\n**Channel Deleted ${channel.name} with channel Id ${channel.id}.**`)
             .setColor(guild.me.roles.highest.hexColor)
-            .setTimestamp()
+            .setTimestamp();
+        if (!logch) return;
         guild.channels.cache.get(logch).send(emd);
     }
 

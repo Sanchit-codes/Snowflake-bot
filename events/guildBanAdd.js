@@ -13,7 +13,8 @@ module.exports = {
             .addField(`Joined At`, moment.utc(user.joinedAt).format('DD/MM/YY'))
             .setColor(guild.me.roles.highest.hexColor)
             .setFooter(`UserID - ${user.id}`)
-            .setTimestamp()
+            .setTimestamp();
+            if(!logch) return;
         guild.channels.cache.get(logch).send(emd);
     }
 
