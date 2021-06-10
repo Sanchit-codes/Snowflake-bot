@@ -1,6 +1,6 @@
 {
   "name": "snowflake",
-  "version": "4.1.0@master",
+  "version": "4.1.4",
   "description": "Snowflake is a bot which have many ways to make your server perfect with its modules",
   "main": "index.js",
   "repository": "https://github.com/PHANTOM-14/Snowflake-bot.git",
@@ -10,6 +10,7 @@
     "discord-image-generation": "^1.4.9",
     "discord-logs": "^1.9.0",
     "discord-paginationembed": "^2.1.0",
+    "discord-reply": "^0.1.2",
     "discord.js": "^12.5.3",
     "fs": "^0.0.1-security",
     "giphy-api": "^2.0.1",
