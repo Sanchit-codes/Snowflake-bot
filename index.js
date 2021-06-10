@@ -10,20 +10,20 @@ logs(client);
 client.commands = new Discord.Collection();
 
 //command emitter
-const commandFolders = fs.readdirSync('./commands');
+const commandFolders = fs.readdirSync('./Commands');
 
 for (const folder of commandFolders) {
-	const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
+	const commandFiles = fs.readdirSync(`./Commands/${folder}`).filter(file => file.endsWith('.js'));
 	for (const file of commandFiles) {
-		const command = require(`./commands/${folder}/${file}`);
+		const command = require(`./Commands/${folder}/${file}`);
 		client.commands.set(command.name, command);
 	}
 }
 //event emitter
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+const eventFiles = fs.readdirSync('./Events').filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {
-	const event = require(`./events/${file}`);
+	const event = require(`./Events/${file}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args, client));
 	} else {
@@ -51,16 +51,6 @@ client.giveawaysManager = manager;
 
 client.on('message', async message => {
 	if (message.channel.type === 'dm') return;
-	if (db.has(`afk-${message.author.id}+${message.guild.id}`)) {
-		const info = db.get(`afk-${message.author.id}+${message.guild.id}`)
-		await db.delete(`afk-${message.author.id}+${message.guild.id}`)
-		message.reply(`Welcome back!`)
-	}
-	if (message.mentions.members.first()) {
-		if (db.has(`afk-${message.mentions.members.first().id}+${message.guild.id}`)) {
-			message.channel.send(message.mentions.members.first().user.tag + " is afk for " + db.get(`afk-${message.mentions.members.first().id}+${message.guild.id}`))
-		}
-	}
 	if (message.author.bot) return false;
 
 	if (message.content.includes("@here") || message.content.includes("@everyone")) return false;
