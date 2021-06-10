@@ -21,10 +21,10 @@ module.exports = {
 		if (!args[0]) {
 			url = message.author.displayAvatarURL({ dynamic: true, size: 4096 });
 		}
-		else {
-			target = message.mentions.users.first();
-			url = target.displayAvatarURL({ dynamic: true, size: 4096 })
-		}
+		 else {
+			 target = message.mentions.users.first();
+			 url = target.displayAvatarURL({ dynamic: true, size: 4096 })
+		 }
 
 		if (member.user.bot === true) {
 			bot = "<:BotCheck:758956052573716520> Yes";
@@ -177,7 +177,7 @@ module.exports = {
                 `${permissions.join(", ")}`,
                 `\u200b`
             ]) 
-			.setThumbnail(url)
+			 .setThumbnail(url)
 			.setFooter(`Information about ${member.user.username}`)
 			.setTimestamp()
 

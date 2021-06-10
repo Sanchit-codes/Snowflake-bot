@@ -14,10 +14,12 @@ module.exports = {
             message.guild.member(message.author);
 
         guild = message.guild;
-        if (!args[0]) return message.reply(`mention a valid channel!!`)
+        if (!message.member.hasPermission("MANAGE_SERVER")) return message.reply("You do not have permission!\n REQUIRED - MANAGE_SERVER");
+
+        if (!args[0]) return message.reply(`Mention a valid channel!!`)
         let content = message.mentions.channels.first().id;
 
-        if (!content) return message.reply(`mention a valid channel!!`)
+        if (!content) return message.reply(`Mention a valid channel!!`)
 
         await db.set(`logch-${message.guild.id}`, content)
         const embed = new MessageEmbed()

@@ -6,7 +6,7 @@ module.exports = {
   description: 'A cute furry cat appears on your screen.',
   cooldown: 5,
   async execute(message) {
-    const apiKey = '32d380ae-c328-4ea9-a623-12fd9b18630d';
+    const apiKey = 'super-secret-key';
     const res = await fetch('https://api.thecatapi.com/v1/images/search', { headers: { 'x-api-key': apiKey } });
     const img = (await res.json())[0].url;
     const embed = new MessageEmbed()

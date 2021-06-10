@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const MessageEmbed = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: 'role',
     aliases: ['addrole'],
@@ -39,8 +39,8 @@ module.exports = {
                 const sembed = new MessageEmbed();
                 sembed
                     .addField(`Added Role!`, `Sucessfully added role <@&${gRole.id}> to ${rMember}`)
-                    .setFooter(message.author.displayName + ` • Thanks for using!`, message.author.displayAvatarURL({ dynamic: true }))
-                    .addTimestamp()
+                    .setFooter(message.author.tag + ` • Thanks for using!`, message.author.displayAvatarURL({ dynamic: true }))
+                    .setTimestamp()
                     .setColor(userinfoget.displayHexColor);
 
                 try {

@@ -13,47 +13,48 @@ module.exports = {
 
 
         if (!message.member.hasPermission('MANAGE_MESSAGES') && !message.member.roles.cache.some((r) => r.name === "Giveaways")) {
-            return message.channel.send('Sorry! You need to have the `manage_messages` permissions to start giveaways.');
-        }
-        let giveawayChannel = message.mentions.channels.first();
-
-        if (!giveawayChannel) {
-            return message.channel.send('Sorry! You have to mention a valid channel!\nExample - *' + `${prefix}` + 'gstart #giveaways `1d`/`10s` `1`/`10` Nitro*');
+            return message.channel.send('Sorry! You need to have the `manage_messages or Giveaways role` permissions to start giveaways.');
         }
 
-        let giveawayDuration = args[1];
+        let giveawayDuration = args[0];
 
         if (!giveawayDuration || isNaN(ms(giveawayDuration))) {
-            return message.channel.send('Sorry! You have to specify a valid duration!\nExample - *' + `${prefix}` + 'gstart #giveaways `1d`/`10s` `1`/`10` Nitro*');
+            return message.channel.send('Sorry! You have to specify a valid duration!\nExample - *' + `${prefix}` + 'gstart `1d`/`10s` `1`/`10` Nitro*');
         }
 
 
-        let giveawayNumberWinners = args[2];
+        let giveawayNumberWinners = args[1];
 
         if (isNaN(giveawayNumberWinners) || (parseInt(giveawayNumberWinners) <= 0)) {
-            return message.channel.send('Sorry! You have to specify a valid number of winners!\nExample - *' + `${prefix}` + 'gstart #giveaways `1d`/`10s` `1`/`10` Nitro*');
+            return message.channel.send('Sorry! You have to specify a valid number of winners!\nExample - *' + `${prefix}` + 'gstart `1d`/`10s` `1`/`10` Nitro*');
         }
 
 
-        let giveawayPrize = args.slice(3).join(' ');
+        let giveawayPrize = args.slice(2).join(' ');
 
         if (!giveawayPrize) {
-            return message.channel.send('Sorry! You have to specify a valid prize!\nExample - *' + `${prefix}` + 'gstart #giveaways `1d`/`10s` `1`/`10` Nitro*');
+            return message.channel.send('Sorry! You have to specify a valid prize!\nExample - *' + `${prefix}` + 'gstart `1d`/`10s` `1`/`10` Nitro*');
         }
 
 
-        client.giveawaysManager.start(giveawayChannel, {
+        client.giveawaysManager.start(message.channel, {
 
             time: ms(giveawayDuration),
 
             prize: giveawayPrize,
 
-            winnerCount: giveawayNumberWinners,
+            winnerCount: parseInt(giveawayNumberWinners),
 
             hostedBy: message.author.id,
+            lastChance: {
+                enabled: true,
+                content: '<:warn:814509016813404241> **LAST CHANCE TO ENTER !** <:warn:814509016813404241>',
+                threshold: 5000,
+                embedColor: '#FF0000'
+            },
 
             messages: {
-                giveaway: "<:giveaway:795287569382244353> ** GiveAway!!** <:giveaway:795287569382244353>",
+                giveaway: "<:giveaway:795287569382244353> ** Giveaway!!** <:giveaway:795287569382244353>",
                 giveawayEnded: "<:giveaway:795287569382244353> **GIVEAWAY ENDED** <:giveaway:795287569382244353>",
                 timeRemaining: "Time remaining: **{duration}**!",
                 inviteToParticipate: "React with <:Giveaway:795287777943486464> to participate!",
@@ -73,6 +74,6 @@ module.exports = {
             }
         });
 
-        message.channel.send(`Giveaway started in ${giveawayChannel}!`);
+        message.channel.send(`Giveaway started!`);
     }
 }

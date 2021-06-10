@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 var GphApiClient = require('giphy-js-sdk-core')
-giphy = GphApiClient('Api Key')
+giphy = GphApiClient('key')
 
 module.exports = {
     name: 'giphy',

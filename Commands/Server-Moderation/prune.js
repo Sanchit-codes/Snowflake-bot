@@ -31,7 +31,7 @@ module.exports = {
 			const embed = new Discord.MessageEmbed()
 				.setTitle(`Purged Messages`)
 				.setColor(userinfoget.displayHexColor)
-				.setFooter(message.author + ` • Thanks for using!`, message.author.displayAvatarURL({ dynamic: true }))
+				.setFooter(message.author.tag + ` • Thanks for using!`, message.author.displayAvatarURL({ dynamic: true }))
 				.setTimestamp()
 				.setDescription(`Bot Messages Purged ${botMessages.size} \nUser Pins Purged ${userPins.size} \nTotal Messages Purged ${deletedMessages.size}.`)
 
