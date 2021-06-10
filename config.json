@@ -1,5 +1,6 @@
 {
 	"prefix": "sn!",
 	"token": "Token",
-        "ytapi": "API Key"
+    "ytapi": "API Key",
+	"whitelist": ["MyFrens","MyFloof"]
 }
