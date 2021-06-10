@@ -1,4 +1,4 @@
-const {MessageEmbed} = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'ping',
 	aliases: ['latency'],
@@ -9,19 +9,19 @@ module.exports = {
 		const msg = await message.channel.send("Pinging...");
 		const Embed = new MessageEmbed()
 		Embed
-		  .setTitle("Pong!")
-		  .setAuthor(`${message.author.username}` , message.author.displayAvatarURL())
-		  .setDescription(
-			` Latency is **${Math.floor(
-			  msg.createdTimestamp - message.createdTimestamp
-			)}ms**\n API Ping is **${Math.round(message.client.ws.ping)}ms**`
-		  )
-		  .setFooter("Thanks for supporting us!")
-		  .setColor(guild.me.roles.highest.hexColor);
-		  
-		msg.edit(Embed);
+			.setTitle("Pong!")
+			.setAuthor(`${message.author.username}`, message.author.displayAvatarURL())
+			.setDescription(
+				` Latency is **${Math.floor(
+					msg.createdTimestamp - message.createdTimestamp
+				)}ms**\n API Ping is **${Math.round(message.client.ws.ping)}ms**`
+			)
+			.setFooter("Thanks for supporting us!")
+			.setColor(guild.me.roles.highest.hexColor);
 		msg.edit("\u200b");
-	  }  
-	  
-	
+		msg.edit(Embed);
+
+	}
+
+
 };
